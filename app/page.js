@@ -1,3 +1,10 @@
+import Link from "next/link";
+import Navigation from "./components/Navigation";
+
 export default function Home() {
-  return <h1>Project Set Up</h1>;
+  return (
+    <div>
+      <h1>The wild oasis,欢迎来到人间天堂!</h1>
+    </div>
+  );
 }
