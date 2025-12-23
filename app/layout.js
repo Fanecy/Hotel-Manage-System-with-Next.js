@@ -19,11 +19,11 @@ function RootLayout({ children }) {
   return (
     <html lang="ch">
       <body
-        className={`${josefin.className} antialiased bg-primary-950 text-primary-100 min-h-screen flex flex-col`}
+        className={`${josefin.className} antialiased bg-primary-950 text-primary-100 min-h-screen flex flex-col relative`}
       >
         <Header />
 
-        <div className="flex-1 px-8 py-12">
+        <div className="flex-1 px-8 py-12 ">
           <main className="max-w-7xl m-auto">{children}</main>
         </div>
       </body>
