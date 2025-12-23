@@ -1,4 +1,6 @@
-import Navigation from "../_components/Navigation";
+export const metadata = {
+  title: "关于",
+};
 
 function page() {
   return (
