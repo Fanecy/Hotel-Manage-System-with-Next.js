@@ -1,18 +1,13 @@
-import { getCabins } from "../_lib/data-service";
-import Counter from "./Counter";
-
-import CabinCard from "@/app/_components/CabinCard";
+import { Suspense } from "react";
+import CabinList from "./CabinList";
+import Spinner from "../_components/Spinner";
 
 export const metadata = {
   title: "度假屋",
 };
 
-export default async function Page() {
+export default function Page() {
   // CHANGE
-  console.log("done");
-
-  const cabins = await getCabins();
-  console.log(cabins);
 
   return (
     <div>
@@ -26,14 +21,9 @@ export default async function Page() {
         在这处异乡的温馨家园里，与自然之美相拥。
         这是一方许您避世清修、静享安宁的完美天地。欢迎来到人间天堂。
       </p>
-
-      {cabins.length > 0 && (
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14">
-          {cabins.map((cabin) => (
-            <CabinCard cabin={cabin} key={cabin.id} />
-          ))}
-        </div>
-      )}
+      <Suspense fallback={<Spinner />}>
+        <CabinList />
+      </Suspense>
     </div>
   );
 }
