@@ -1,7 +1,9 @@
+import { getCabin } from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
 
 // PLACEHOLDER DATA
-const cabin = {
+/* const cabin = {
   id: 89,
   name: "001",
   maxCapacity: 2,
@@ -10,23 +12,39 @@ const cabin = {
   description:
     "Discover the ultimate luxury getaway for couples in the cozy wooden cabin 001. Nestled in a picturesque forest, this stunning cabin offers a secluded and intimate retreat. Inside, enjoy modern high-quality wood interiors, a comfortable seating area, a fireplace and a fully-equipped kitchen. The plush king-size bed, dressed in fine linens guarantees a peaceful nights sleep. Relax in the spa-like shower and unwind on the private deck with hot tub.",
   image:
-    "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/avatar/cabin-001.jpg",
-};
+    "https://vydgmeanfgkjybbnwznn.supabase.co/storage/v1/object/public/avatars/cabin-001.jpg",
+}; */
 
-export default function Page() {
+export async function generateMetadata({ params }) {
+  const { name } = await getCabin(params.cabinId);
+  return { title: `别墅 ${name}` };
+}
+
+export default async function Page({ params }) {
+  console.log(params);
+  console.log(params.cabinId);
+
+  const cabin = await getCabin(params.cabinId);
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
     cabin;
+
+  console.log(image);
 
   return (
     <div className="max-w-6xl mx-auto mt-8">
       <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
         <div className="relative scale-[1.15] -translate-x-3">
-          <img src={image} alt={`Cabin ${name}`} />
+          <Image
+            fill
+            className="object-cover"
+            src={image}
+            alt={`Cabin ${name}`}
+          />
         </div>
 
         <div>
           <h3 className="text-accent-100 font-black text-7xl mb-5 translate-x-[-254px] bg-primary-950 p-6 pb-1 w-[150%]">
-            Cabin {name}
+            别墅 {name}
           </h3>
 
           <p className="text-lg text-primary-300 mb-10">{description}</p>
@@ -35,21 +53,20 @@ export default function Page() {
             <li className="flex gap-3 items-center">
               <UsersIcon className="h-5 w-5 text-primary-600" />
               <span className="text-lg">
-                For up to <span className="font-bold">{maxCapacity}</span>{" "}
-                guests
+                可居住 <span className="font-bold">{maxCapacity}</span> 位贵客
               </span>
             </li>
             <li className="flex gap-3 items-center">
               <MapPinIcon className="h-5 w-5 text-primary-600" />
               <span className="text-lg">
-                Located in the heart of the{" "}
-                <span className="font-bold">Dolomites</span> (Italy)
+                居于
+                <span className="font-bold">Dolomites</span> (Italy)的中心地带
               </span>
             </li>
             <li className="flex gap-3 items-center">
               <EyeSlashIcon className="h-5 w-5 text-primary-600" />
               <span className="text-lg">
-                Privacy <span className="font-bold">100%</span> guaranteed
+                保证 <span className="font-bold">100%</span> 隐私
               </span>
             </li>
           </ul>
@@ -58,7 +75,7 @@ export default function Page() {
 
       <div>
         <h2 className="text-5xl font-semibold text-center">
-          Reserve today. Pay on arrival.
+          现在预约，登记付费
         </h2>
       </div>
     </div>
