@@ -1,3 +1,4 @@
+import { getCabins } from "../_lib/data-service";
 import Counter from "./Counter";
 
 import CabinCard from "@/app/_components/CabinCard";
@@ -6,9 +7,12 @@ export const metadata = {
   title: "度假屋",
 };
 
-export default function Page() {
+export default async function Page() {
   // CHANGE
-  const cabins = [];
+  console.log("done");
+
+  const cabins = await getCabins();
+  console.log(cabins);
 
   return (
     <div>

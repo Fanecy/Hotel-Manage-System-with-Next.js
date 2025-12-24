@@ -17,7 +17,7 @@ export default function Navigation() {
             href="/account"
             className="hover:text-accent-400 transition-colors"
           >
-            游客区
+            用户信息
           </Link>
         </li>
         <li>

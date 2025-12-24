@@ -7,22 +7,25 @@ function CabinCard({ cabin }) {
 
   return (
     <div className="flex border-primary-800 border">
-      <Image
-        src={image}
-        alt={`Cabin ${name}`}
-        className="flex-1 border-r border-primary-800"
-      />
+      <div className="flex-1 relative">
+        <Image
+          src={image}
+          fill
+          alt={`Cabin ${name}`}
+          className="object-cover border-r border-primary-800"
+        />
+      </div>
 
       <div className="flex-grow">
         <div className="pt-5 pb-4 px-7 bg-primary-950">
           <h3 className="text-accent-500 font-semibold text-2xl mb-3">
-            Cabin {name}
+            别墅 {name}
           </h3>
 
           <div className="flex gap-3 items-center mb-2">
             <UsersIcon className="h-5 w-5 text-primary-600" />
             <p className="text-lg text-primary-200">
-              For up to <span className="font-bold">{maxCapacity}</span> guests
+              可居住 <span className="font-bold">{maxCapacity}</span> 名贵客
             </p>
           </div>
 
@@ -39,7 +42,7 @@ function CabinCard({ cabin }) {
             ) : (
               <span className="text-3xl font-[350]">${regularPrice}</span>
             )}
-            <span className="text-primary-200">/ night</span>
+            <span className="text-primary-200">/ 晚</span>
           </p>
         </div>
 
@@ -48,7 +51,7 @@ function CabinCard({ cabin }) {
             href={`/cabins/${id}`}
             className="border-l border-primary-800 py-4 px-6 inline-block hover:bg-accent-600 transition-all hover:text-primary-900"
           >
-            Details & reservation &rarr;
+            点击查看更多信息 &rarr;
           </Link>
         </div>
       </div>
