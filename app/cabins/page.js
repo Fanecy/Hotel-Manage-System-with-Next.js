@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Suspense } from "react";
 import CabinList from "./CabinList";
 import Spinner from "../_components/Spinner";
@@ -9,6 +10,7 @@ export const metadata = {
 export default function Page() {
   // CHANGE
 
+  //164--172
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">

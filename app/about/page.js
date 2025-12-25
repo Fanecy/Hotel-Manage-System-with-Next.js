@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import Image from "next/image";
 import ab1 from "@/public/about-1.jpg";
 import ab2 from "@/public/about-2.jpg";
