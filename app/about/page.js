@@ -4,12 +4,15 @@ import Image from "next/image";
 import ab1 from "@/public/about-1.jpg";
 import ab2 from "@/public/about-2.jpg";
 import Link from "next/link";
+import { getCabins } from "../_lib/data-service";
 
 export const metadata = {
   title: "关于",
 };
 
-function page() {
+async function page() {
+  const cabinNum = (await getCabins()).length;
+
   return (
     <div className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
       <div className="col-span-3">
@@ -24,7 +27,8 @@ function page() {
             更是一场回归自然的旅程，让您与家人重拾那些简单而纯粹的快乐。
           </p>
           <p>
-            八间奢华木屋为您筑起温馨的港湾，但真正的自由与宁静，藏匿于群山环抱之间。
+            {cabinNum}
+            间奢华木屋为您筑起温馨的港湾，但真正的自由与宁静，藏匿于群山环抱之间。
             漫步于郁郁葱葱的林间，呼吸清冽纯净的气息；
             或倚暖炉篝火，或浸润汤泉之中，仰望漫天繁星闪烁。
           </p>

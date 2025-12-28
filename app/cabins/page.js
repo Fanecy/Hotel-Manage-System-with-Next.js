@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import CabinList from "./CabinList";
 import Spinner from "../_components/Spinner";
 
+/* export const revalidate = 3600; //每3600s重新验证一次,即从data cache中重新读取 */
 export const metadata = {
   title: "度假屋",
 };
